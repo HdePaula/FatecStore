@@ -18,7 +18,7 @@
             <ImageView fitHeight="720.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true" />
             <VBox alignment="CENTER" prefHeight="720.0" prefWidth="640.0">
                <children>
-                  <Label id="nome_loja" alignment="CENTER" prefHeight="53.0" prefWidth="640.0" text="Fatec Store" textAlignment="CENTER">
+                  <Label id="title" fx:id="title" alignment="CENTER" prefHeight="53.0" prefWidth="640.0" styleClass="title" stylesheets="@style.css" text="Fatec Store" textAlignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>

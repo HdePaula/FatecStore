@@ -3,3 +3,9 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 14px;
 }
+
+.title {
+    -fx-text-fill: black;
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+}
