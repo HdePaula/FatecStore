@@ -1,12 +1,12 @@
 package br.com.fatec.fatecstore;
 
-import java.io.IOException;
 import javafx.fxml.FXML;
+import java.io.IOException;
 
 public class LoginController {
 
     @FXML
-    private void switchToCadastro_usuario() throws IOException {
+    private void switchToCadastroUsuario() throws IOException {
         App.setRoot("cadastro_usuario");
     }
 }
