@@ -1,5 +1,11 @@
-.button {
+.button_verde {
     -fx-background-color: greenyellow;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+}
+
+.button_branco {
+    -fx-background-color: blue;
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 14px;
 }

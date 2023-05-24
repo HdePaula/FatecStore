@@ -33,7 +33,7 @@
                      </VBox.margin>
                   </TextField>
                   <TextField maxWidth="-Infinity" text="Senha" />
-                  <Button id="botao" fx:id="botao" mnemonicParsing="false" stylesheets="@style.css" text="Sign in" textAlignment="CENTER">
+                  <Button id="botao" fx:id="botao" mnemonicParsing="false" styleClass="button_verde" stylesheets="@style.css" text="Sign in" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>

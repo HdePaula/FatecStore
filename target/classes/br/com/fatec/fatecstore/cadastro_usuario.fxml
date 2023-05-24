@@ -33,7 +33,7 @@
                   </TextField>
                   <TextField maxWidth="-Infinity" text="Senha" />
                   <TextField maxWidth="-Infinity" text="Confirmar Senha" />
-                  <Button id="button" fx:id="botao" mnemonicParsing="false" stylesheets="@style.css" text="Cadastrar" textAlignment="CENTER">
+                  <Button id="button" fx:id="botao" mnemonicParsing="false" styleClass="button_verde" stylesheets="@style.css" text="Cadastrar" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
