@@ -2,3 +2,4 @@ module-info.class
 br\com\fatec\fatecstore\App.class
 br\com\fatec\fatecstore\LoginController.class
 br\com\fatec\fatecstore\Cadastro_usuarioController.class
+br\com\fatec\fatecstore\MenuController.class
