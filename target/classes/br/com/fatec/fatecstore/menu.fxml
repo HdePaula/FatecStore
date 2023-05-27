@@ -23,7 +23,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button id="text_button" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Produto" textAlignment="RIGHT" textFill="#5a5a5a">
+                  <Button id="text_button" alignment="CENTER" mnemonicParsing="false" onAction="#switchToCadastroProduto" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Produto" textAlignment="RIGHT" textFill="#5a5a5a">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -80,38 +80,41 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="300.0" prefWidth="960.0">
                <children>
-                  <HBox alignment="CENTER_LEFT">
+                  <HBox alignment="CENTER">
                      <children>
-                        <Label id="sub_title" alignment="CENTER" stylesheets="@style.css" text="MODA AVANÇADA, INSPIRADA EM TECNOLOGIA." textAlignment="CENTER">
+                        <Label id="sub_title" alignment="CENTER" prefHeight="27.0" prefWidth="802.0" stylesheets="@style.css" text="MODA AVANÇADA, INSPIRADA EM TECNOLOGIA." textAlignment="CENTER">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="110.0" text="usuário" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="80.0" text="usuário" />
                      </children>
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <ImageView id="image" fitHeight="220.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../image/banner1.jpeg" />
-                     </image>
+                  <Pane>
+                     <children>
+                        <Pane id="banner1" maxWidth="-Infinity" prefHeight="220.0" prefWidth="780.0" stylesheets="@style.css" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </padding>
                      <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
+                        <Insets left="90.0" right="90.0" top="15.0" />
                      </VBox.margin>
-                  </ImageView>
+                  </Pane>
                   <HBox maxHeight="400.0" minHeight="400.0" prefHeight="400.0" prefWidth="960.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0" style="-fx-background-color: red;">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0" spacing="25.0">
                            <children>
                               <Pane id="banner2" prefHeight="220.0" prefWidth="200.0" stylesheets="@style.css" />
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../image/banner3.jpeg" />
-                                 </image></ImageView>
+                              <Pane id="banner3" prefHeight="220.0" prefWidth="200.0" stylesheets="@style.css" />
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" left="40.0" right="10.0" />
+                           </padding>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0" style="-fx-background-color: green;">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -120,7 +123,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0">
                                        <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../../../image/modeloNike4.jpeg" />
                                              </image></ImageView>
@@ -130,10 +133,11 @@
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0">
                                        <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../../../image/modeloNike3.jpeg" />
-                                             </image></ImageView>
+                                             </image>
+                                          </ImageView>
                                           <Label id="font_banner" stylesheets="@style.css" text="Label" />
                                           <Label id="font_codigo" stylesheets="@style.css" text="Label" />
                                        </children>
@@ -144,17 +148,20 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0">
                                        <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../../../image/modeloNike2.jpeg" />
-                                             </image></ImageView>
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin></ImageView>
                                           <Label id="font_banner" stylesheets="@style.css" text="Label" />
                                           <Label id="font_codigo" stylesheets="@style.css" text="Label" />
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0">
                                        <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../../../image/modeloNike1.jpeg" />
                                              </image></ImageView>

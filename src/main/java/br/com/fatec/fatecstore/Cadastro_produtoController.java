@@ -15,7 +15,7 @@ import javafx.fxml.Initializable;
  *
  * @author Henri
  */
-public class MenuController implements Initializable {
+public class Cadastro_produtoController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -23,12 +23,7 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-    
-    @FXML
-    private void switchToCadastroProduto() throws IOException {
-        App.setRoot("cadastro_produto");
-    }
+    }    
     
     @FXML
     private void btnLogout() throws IOException {

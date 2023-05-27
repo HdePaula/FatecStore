@@ -67,8 +67,22 @@
     -fx-background-size: cover;
 }
 
+#banner1 {
+    -fx-background-image: url("../../../../image/banner1.jpeg");
+    -fx-background-size: cover;
+}
 
 #banner2 {
     -fx-background-image: url("../../../../image/banner2.jpeg");
+    -fx-background-size: cover;
+}
+
+#banner3 {
+    -fx-background-image: url("../../../../image/banner3.jpeg");
+    -fx-background-size: cover;
+}
+
+#bannerProduto {
+    -fx-background-image: url("../../../../image/bannerProduto.jpeg");
     -fx-background-size: cover;
 }
