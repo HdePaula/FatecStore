@@ -4,9 +4,13 @@
  */
 package br.com.fatec.fatecstore;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -16,6 +20,27 @@ import javafx.fxml.Initializable;
  * @author Henri
  */
 public class Cadastro_produtoController implements Initializable {
+    
+    @FXML
+    private Button btnConfirmar;
+        
+    @FXML
+    private ComboBox<?> cbModelo;
+
+    @FXML
+    private ComboBox<?> cbMarca;
+
+    @FXML
+    private TextField txtQuantidade;
+
+    @FXML
+    private Button btnCancelar;
+
+    @FXML
+    void switchToMenu(ActionEvent event){
+
+    }
+
 
     /**
      * Initializes the controller class.

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -11,47 +17,47 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.fatecstore.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.fatecstore.MenuController">
    <children>
       <HBox prefHeight="720.0" prefWidth="1280.0">
          <children>
             <VBox id="menu_bar" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="320.0" stylesheets="@style.css">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Menu Principal">
+                  <Button fx:id="btnMenu" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Menu Principal">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button id="text_button" alignment="CENTER" mnemonicParsing="false" onAction="#switchToCadastroProduto" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Produto" textAlignment="RIGHT" textFill="#5a5a5a">
+                  <Button id="text_button" fx:id="btnCadastrarProduto" alignment="CENTER" mnemonicParsing="false" onAction="#switchToCadastroProduto" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Produto" textAlignment="RIGHT" textFill="#5a5a5a">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Editar Dados">
+                  <Button fx:id="btnEditarDados" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Editar Dados">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Vendas">
+                  <Button fx:id="btnVendas" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Vendas">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Consulta Avançada">
+                  <Button fx:id="btnConsultaAvancada" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Consulta Avançada">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Vendedor">
+                  <Button fx:id="btnCadastrarVendedor" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Vendedor">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

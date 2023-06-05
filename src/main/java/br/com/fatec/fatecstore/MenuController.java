@@ -4,6 +4,7 @@
  */
 package br.com.fatec.fatecstore;
 
+import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,24 @@ import javafx.fxml.Initializable;
  * @author Henri
  */
 public class MenuController implements Initializable {
+    
+    @FXML
+    private Button btnCadastrarVendedor;
+
+    @FXML
+    private Button btnConsultaAvancada;
+
+    @FXML
+    private Button btnCadastrarProduto;
+
+    @FXML
+    private Button btnVendas;
+
+    @FXML
+    private Button btnMenu;
+
+    @FXML
+    private Button btnEditarDados;
 
     /**
      * Initializes the controller class.
