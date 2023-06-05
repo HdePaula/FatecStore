@@ -30,4 +30,9 @@ public class Cadastro_produtoController implements Initializable {
         App.setRoot("login");
     }
     
+    @FXML
+    private void switchToMenu() throws IOException {
+        App.setRoot("menu");
+    }
+    
 }
