@@ -40,6 +40,7 @@ public class Cadastro_produtoController implements Initializable {
     void switchToMenu(ActionEvent event){
 
     }
+    
 
 
     /**
@@ -56,8 +57,28 @@ public class Cadastro_produtoController implements Initializable {
     }
     
     @FXML
-    private void switchToMenu() throws IOException {
+    private void switchToMenuPrincipal() throws IOException {
         App.setRoot("menu");
+    }
+    
+    @FXML
+    private void switchToVenda() throws IOException {
+        App.setRoot("venda");
+    }
+    
+    @FXML
+    private void switchToConsultaAvancada() throws IOException {
+        App.setRoot("consulta_avancada");
+    }
+    
+    @FXML
+    private void switchToCadastrarVendedor() throws IOException {
+        App.setRoot("cadastrar_vendedor");
+    }
+    
+    @FXML
+    private void switchToEditarDados() throws IOException {
+        App.setRoot("editar_dados");
     }
     
 }

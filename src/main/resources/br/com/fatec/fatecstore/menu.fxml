@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -17,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.fatecstore.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.fatecstore.MenuController">
    <children>
       <HBox prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -36,28 +30,28 @@
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="btnEditarDados" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Editar Dados">
+                  <Button fx:id="btnEditarDados" mnemonicParsing="false" onAction="#switchToEditarDados" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Editar Dados">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="btnVendas" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Vendas">
+                  <Button fx:id="btnVendas" mnemonicParsing="false" onAction="#switchToVenda" onDragDetected="#switchToVenda" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Vendas">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="btnConsultaAvancada" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Consulta Avançada">
+                  <Button fx:id="btnConsultaAvancada" mnemonicParsing="false" onAction="#switchToConsultaAvancada" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Consulta Avançada">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="btnCadastrarVendedor" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Vendedor">
+                  <Button fx:id="btnCadastrarVendedor" mnemonicParsing="false" onAction="#switchToCadastrarVendedor" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Vendedor">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

@@ -4,7 +4,6 @@
  */
 package br.com.fatec.fatecstore;
 
-import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,25 +15,7 @@ import javafx.fxml.Initializable;
  *
  * @author Henri
  */
-public class MenuController implements Initializable {
-    
-    @FXML
-    private Button btnCadastrarVendedor;
-
-    @FXML
-    private Button btnConsultaAvancada;
-
-    @FXML
-    private Button btnCadastrarProduto;
-
-    @FXML
-    private Button btnVendas;
-
-    @FXML
-    private Button btnMenu;
-
-    @FXML
-    private Button btnEditarDados;
+public class Editar_dadosController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -42,16 +23,11 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
     
     @FXML
     private void switchToCadastroProduto() throws IOException {
         App.setRoot("cadastro_produto");
-    }
-    
-    @FXML
-    private void switchToEditarDados() throws IOException {
-        App.setRoot("editar_dados");
     }
     
     @FXML
@@ -67,6 +43,11 @@ public class MenuController implements Initializable {
     @FXML
     private void switchToCadastrarVendedor() throws IOException {
         App.setRoot("cadastrar_vendedor");
+    }
+    
+    @FXML
+    private void switchToMenu() throws IOException {
+        App.setRoot("menu");
     }
     
     @FXML

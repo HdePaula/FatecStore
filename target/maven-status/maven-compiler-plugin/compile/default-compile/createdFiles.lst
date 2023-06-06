@@ -1,5 +1,12 @@
+br\com\fatec\fatecstore\MODEL\Produto.class
+br\com\fatec\fatecstore\Consulta_avancadaController.class
+br\com\fatec\fatecstore\DAO\ProdutoDAO.class
+br\com\fatec\fatecstore\Editar_dadosController.class
+br\com\fatec\fatecstore\Cadastrar_vendedorController.class
 module-info.class
 br\com\fatec\fatecstore\App.class
 br\com\fatec\fatecstore\Cadastro_usuarioController.class
+br\com\fatec\fatecstore\VendaController.class
 br\com\fatec\fatecstore\MenuController.class
 br\com\fatec\fatecstore\LoginController.class
+br\com\fatec\fatecstore\Cadastro_produtoController.class
