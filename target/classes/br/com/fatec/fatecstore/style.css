@@ -17,6 +17,7 @@
     -fx-text-fill: #757575;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+    -fx-text-fill: #006400;
 }
 
 .button_cancela {
@@ -24,6 +25,7 @@
     -fx-text-fill: #757575;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+    -fx-text-fill: #800000;
 }
 
 .title {
