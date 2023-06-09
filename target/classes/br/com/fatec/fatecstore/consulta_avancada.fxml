@@ -3,7 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -103,33 +107,41 @@
                         <Insets left="20.0" />
                      </padding>
                   </HBox>
-                  <HBox prefHeight="620.0" prefWidth="960.0" style="-fx-background-color: green;">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="40.0" top="20.0" />
-                     </padding>
+                  <VBox prefHeight="620.0" prefWidth="960.0">
                      <children>
-                        <GridPane prefWidth="960.0">
+                        <GridPane>
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="201.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.0" minWidth="10.0" prefWidth="231.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="10.0" prefWidth="188.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="144.0" />
                           </columnConstraints>
                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                              <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button mnemonicParsing="false" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Apagar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Pesquisar" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="50.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label text="Pesquisar por: " GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
+                        <TableView prefHeight="489.0" prefWidth="915.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="25.0" right="20.0" />
