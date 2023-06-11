@@ -7,6 +7,7 @@ package br.com.fatec.fatecstore;
 import br.com.fatec.fatecstore.PERSISTENCIA.Banco;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -104,14 +105,65 @@ public class VendaController implements Initializable {
             e.printStackTrace();
             // Trate a exceção adequadamente
         }
-    });
+        });
         
+        //-----------------------------
+        cbModelo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                double valor = obterValor(newValue);
+                lbValor.setText(String.valueOf(valor));
+            } catch (SQLException e) {
+                // Tratar exceção, se necessário
+                e.printStackTrace();
+            }
+        });
+        //-----------------------------
         try {
             Banco.desconectar();
         } catch (SQLException ex) {
             Logger.getLogger(Editar_dadosController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
+    
+    public double obterValor(String modelo) throws SQLException {
+        double valor = 0.0;
+
+        // Conectar ao banco de dados
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        
+        Banco.conectar();
+        
+        try {
+            // Consultar o valor correspondente ao modelo na tabela de produtos
+            String sql = "SELECT valor FROM PRODUTO WHERE modelo = ?";
+            statement = Banco.obterConexao().prepareStatement(sql);
+            statement.setString(1, modelo);
+
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                valor = resultSet.getDouble("valor");
+            }
+        } finally {
+            // Fechar recursos (ResultSet, PreparedStatement e Connection)
+            if (resultSet != null) {
+                resultSet.close();
+            }
+
+            if (statement != null) {
+                statement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        
+        Banco.desconectar();
+        return valor;
+    }
     
     private List<String> obterModelosDaMarca(String marca) throws SQLException {
         // Aqui você pode implementar a lógica para obter os modelos da marca selecionada

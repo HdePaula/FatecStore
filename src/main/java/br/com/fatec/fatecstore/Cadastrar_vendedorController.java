@@ -102,12 +102,12 @@ public class Cadastrar_vendedorController implements Initializable {
     
     @FXML
     private void btnCancelar() throws IOException {
-        this.limpaCampos();
+        limpaCampos();
     }
     
     @FXML
     private void btnConfirmar() throws IOException {
-        this.limpaCampos();
+        limpaCampos();
     }
     
 }
