@@ -10,6 +10,7 @@ import br.com.fatec.fatecstore.PERSISTENCIA.Banco;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -71,22 +72,22 @@ public class Editar_dadosController implements Initializable {
         resultSet.close();
         statement.close();
 
-        // Configurar o ouvinte de propriedade para a combobox de marca
-        cbMarca.valueProperty().addListener((observable, oldValue, newValue) -> {
-            // Limpar a seleção da combobox de modelo
-            cbModelo.getSelectionModel().clearSelection();
-
-            // Obter os modelos da marca selecionada
-            List<String> modelos = obterModelosDaMarca(newValue);
-
-            // Atualizar os itens da combobox de modelo
-            cbModelo.setItems(FXCollections.observableArrayList(modelos));
-        });
-
     } catch (SQLException e) {
         e.printStackTrace();
         // Tratar a exceção adequadamente
     }
+        
+        cbMarca.valueProperty().addListener((observable, oldValue, newValue) -> {
+        cbModelo.getSelectionModel().clearSelection();
+
+        try {
+            List<String> modelos = obterModelosDaMarca(newValue);
+            cbModelo.setItems(FXCollections.observableArrayList(modelos));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Trate a exceção adequadamente
+        }
+    });
         
         try {
             Banco.desconectar();
@@ -95,19 +96,30 @@ public class Editar_dadosController implements Initializable {
         }
     }
     
-    private List<String> obterModelosDaMarca(String marca) {
+    private List<String> obterModelosDaMarca(String marca) throws SQLException {
         // Aqui você pode implementar a lógica para obter os modelos da marca selecionada
         // Consultar o banco de dados ou utilizar uma fonte de dados existente
-
-        // Exemplo de implementação fictícia
         List<String> modelos = new ArrayList<>();
-        if (marca.equals("NIKE")) {
-            modelos.add("Air Max");
-            modelos.add("Free Run");
-        } else if (marca.equals("ADIDAS")) {
-            modelos.add("Superstar");
-            modelos.add("Stan Smith");
-        }
+            Banco.conectar();
+            try {
+                String sql = "SELECT DISTINCT modelo FROM PRODUTO WHERE marca = ?";
+                PreparedStatement statement = Banco.obterConexao().prepareStatement(sql);
+                statement.setString(1, marca);
+
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    String modelo = resultSet.getString("modelo");
+                    modelos.add(modelo);
+                }
+
+                resultSet.close();
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Tratar a exceção adequadamente
+            }
+            Banco.desconectar();
         return modelos;
     }
     
@@ -148,7 +160,7 @@ public class Editar_dadosController implements Initializable {
     }
     
     @FXML
-    private void btnGravar() throws IOException {
+    private void btnGravar() throws IOException, SQLException {
         if (txtValor.getText().isEmpty() || cbMarca.getSelectionModel().isEmpty() || cbModelo.getSelectionModel().isEmpty()) {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setTitle("PREENCHA TODOS OS CAMPOS");
@@ -156,12 +168,95 @@ public class Editar_dadosController implements Initializable {
             alerta.setContentText("Preencha Todos os campos!");
             alerta.showAndWait();
         }else{
+            String marca = cbMarca.getValue();
+            String modelo = cbModelo.getValue();
+            String valor = txtValor.getText();
+
+            Banco.conectar();
+
+            try {
+                String sql = "UPDATE PRODUTO SET valor = ? WHERE marca = ? AND modelo = ?";
+                PreparedStatement statement = Banco.obterConexao().prepareStatement(sql);
+                statement.setString(1, valor);
+                statement.setString(2, marca);
+                statement.setString(3, modelo);
+
+                int rowsUpdated = statement.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("ATUALIZADO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("PRODUTO ATUALIZADO COM SUCESSO");
+                    alerta.showAndWait();
+                    limpaCampos();
+                } else {
+                    // Trate o caso em que nenhum registro foi atualizado
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("ERRO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Nenhum produto encontrado para atualizar");
+                    alerta.showAndWait();
+                }
+
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Trate a exceção adequadamente
+            }
+            
+            Banco.desconectar();
+            
             limpaCampos();
         }
     }
     
     @FXML
-    private void btnApagar() throws IOException {
-        limpaCampos();
-    }
+    private void btnApagar() throws IOException, SQLException {
+        if (cbMarca.getSelectionModel().isEmpty() || cbModelo.getSelectionModel().isEmpty()) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("PREENCHA TODOS OS CAMPOS");
+        alerta.setHeaderText("INFORMACOES");
+        alerta.setContentText("Preencha Todos os campos!");
+        alerta.showAndWait();
+        } else {
+            String marca = cbMarca.getValue();
+            String modelo = cbModelo.getValue();
+
+            Banco.conectar();
+
+            try {
+                String sql = "DELETE FROM PRODUTO WHERE marca = ? AND modelo = ?";
+                PreparedStatement statement = Banco.obterConexao().prepareStatement(sql);
+                statement.setString(1, marca);
+                statement.setString(2, modelo);
+
+                int rowsDeleted = statement.executeUpdate();
+
+                if (rowsDeleted > 0) {
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("APAGADO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("PRODUTO APAGADO COM SUCESSO");
+                    alerta.showAndWait();
+                    limpaCampos();
+                } else {
+                    // Trate o caso em que nenhum registro foi apagado
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("ERRO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Nenhum produto encontrado para apagar");
+                    alerta.showAndWait();
+                }
+
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Trate a exceção adequadamente
+            }
+
+            Banco.desconectar();
+        }
+            limpaCampos();
+        }
 }

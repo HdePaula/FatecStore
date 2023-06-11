@@ -152,8 +152,14 @@
                                        <HBox.margin>
                                           <Insets right="55.0" />
                                        </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
-                                    <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelar" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar" />
+                                    <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelar" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
                                  </children>
                               </HBox>
                            </children>
