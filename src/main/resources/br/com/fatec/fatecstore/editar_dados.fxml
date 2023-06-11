@@ -35,7 +35,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Editar Dados">
+                  <Button disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Editar Dados">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -122,12 +122,12 @@
                               <HBox prefHeight="100.0" prefWidth="480.0">
                                  <children>
                                     <Label prefWidth="100.0" text="VALOR: " />
-                                    <TextField />
+                                    <TextField fx:id="txtValor" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="btnConfirmar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Confirmar">
+                                    <Button fx:id="btnGravar" mnemonicParsing="false" onAction="#btnGravar" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Gravar">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -135,7 +135,7 @@
                                           <Insets right="35.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="btnCancelar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar" />
+                                    <Button fx:id="btnApagar" mnemonicParsing="false" onAction="#btnApagar" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Apagar" />
                                  </children>
                               </HBox>
                            </children>

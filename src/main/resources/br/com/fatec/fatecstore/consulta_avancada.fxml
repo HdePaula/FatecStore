@@ -55,7 +55,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Consulta Avançada">
+                  <Button disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Consulta Avançada">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -129,8 +129,8 @@
                                     <Insets left="50.0" />
                                  </GridPane.margin>
                               </Button>
-                              <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="cbFiltro" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtFiltro" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Label text="Pesquisar por: " GridPane.rowIndex="1" />
                            </children>
                         </GridPane>

@@ -5,6 +5,10 @@
     -fx-font-weight: bold;
 }
 
+.button_verde:hover {
+    -fx-background-color: #04aec4;
+}
+
 .button_branco {
     -fx-background-color: white;
     -fx-text-fill: #757575;
@@ -12,20 +16,33 @@
     -fx-font-weight: bold;
 }
 
+.button_branco:hover {
+    -fx-background-color: #03606C;
+    -fx-text-fill: #FFFFFF;
+}
+
 .button_confirma {
     -fx-background-color: greenyellow;
-    -fx-text-fill: #757575;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: #006400;
 }
 
+.button_confirma:hover {
+    -fx-background-color: #007516;
+    -fx-text-fill: #ffffff;
+}
+
 .button_cancela {
     -fx-background-color: red;
-    -fx-text-fill: #757575;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: #800000;
+}
+
+.button_cancela:hover {
+    -fx-background-color: #6e0000;
+    -fx-text-fill: #ffffff;
 }
 
 .title {

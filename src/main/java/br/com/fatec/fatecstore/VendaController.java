@@ -9,6 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -16,10 +19,38 @@ import javafx.fxml.Initializable;
  * @author Henri
  */
 public class VendaController implements Initializable {
+    
+    @FXML
+    private ComboBox<?> cbMarca;
+
+    @FXML
+    private ComboBox<?> cbModelo;
+
+    @FXML
+    private Label lbValor;
+
+    @FXML
+    private TextField txtCPFCliente;
+
+    @FXML
+    private TextField txtIDVendedor;
+
+    @FXML
+    private TextField txtQuantidade;
 
     /**
      * Initializes the controller class.
      */
+    
+    private void limpaCampos(){
+        txtCPFCliente.setText("");
+        txtIDVendedor.setText("");
+        txtQuantidade.setText("");
+        cbMarca.getSelectionModel().clearSelection();
+        cbModelo.getSelectionModel().clearSelection();
+        lbValor.setText("---");
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -55,4 +86,14 @@ public class VendaController implements Initializable {
         App.setRoot("login");
     }
     
+    @FXML
+    private void btnConfirmar() throws IOException {
+        
+        this.limpaCampos();
+    }
+    
+    @FXML
+    private void btnCancelar() throws IOException {
+        this.limpaCampos();
+    }
 }

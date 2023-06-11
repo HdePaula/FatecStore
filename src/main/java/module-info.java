@@ -2,6 +2,9 @@ module br.com.fatec.fatecstore {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.base;
+    requires java.sql;
+    
+    requires mysql.connector.java;
 
     opens br.com.fatec.fatecstore to javafx.fxml;
     exports br.com.fatec.fatecstore;

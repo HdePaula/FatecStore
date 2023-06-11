@@ -58,7 +58,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Vendedor">
+                  <Button disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Vendedor">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -109,25 +109,25 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="NOME: " />
-                                    <TextField prefWidth="200.0" />
+                                    <TextField fx:id="txtNome" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="DATA DE NASCIMENTO: " />
-                                    <TextField prefWidth="200.0" />
+                                    <TextField fx:id="txtDataNascimento" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="480.0">
                                  <children>
                                     <Label prefWidth="150.0" text="TELEFONE: " />
-                                    <TextField prefWidth="200.0" />
+                                    <TextField fx:id="txtTelefone" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="EMAIL: " />
-                                    <TextField fx:id="txtQuantidade" prefWidth="200.0" />
+                                    <TextField fx:id="txtEmail" prefWidth="200.0" />
                                  </children>
                               </HBox>
                            </children>
@@ -143,25 +143,25 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="ENDEREÇO: " />
-                                    <TextField fx:id="txtQuantidade1" prefWidth="200.0" />
+                                    <TextField fx:id="txtEndereco" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="CPF: " />
-                                    <TextField fx:id="txtQuantidade11" prefWidth="200.0" />
+                                    <TextField fx:id="txtCPFVendedor" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="CARGO: " />
-                                    <ComboBox prefWidth="200.0" />
+                                    <ComboBox fx:id="cmbCargo" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="SALARIO: " />
-                                    <TextField fx:id="txtQuantidade12" prefWidth="200.0" />
+                                    <TextField fx:id="txtSalario" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
@@ -174,7 +174,7 @@
                                           <Insets right="40.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="btnCancelar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar" />
+                                    <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelar" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar" />
                                  </children>
                               </HBox>
                            </children>

@@ -43,7 +43,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Vendas">
+                  <Button disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Vendas">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -110,7 +110,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="100.0" text="CPF CLIENTE: " />
-                                    <TextField prefWidth="150.0" />
+                                    <TextField fx:id="txtCPFCliente" prefWidth="150.0" />
                                     <Label prefWidth="100.0" text="MARCA: ">
                                        <HBox.margin>
                                           <Insets left="70.0" />
@@ -121,7 +121,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="100.0" text="ID VENDEDOR: " />
-                                    <TextField prefWidth="150.0" />
+                                    <TextField fx:id="txtIDVendedor" prefWidth="150.0" />
                                     <Label prefWidth="100.0" text="MODELO: ">
                                        <HBox.margin>
                                           <Insets left="70.0" />
@@ -140,12 +140,12 @@
                                        <HBox.margin>
                                           <Insets left="70.0" />
                                        </HBox.margin></Label>
-                                    <Label prefWidth="150.0" text="---" />
+                                    <Label fx:id="lbValor" prefWidth="150.0" text="---" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="btnConfirmar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Confirmar">
+                                    <Button fx:id="btnConfirmar" mnemonicParsing="false" onAction="#btnConfirmar" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Confirmar">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -153,7 +153,7 @@
                                           <Insets right="55.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="btnCancelar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar" />
+                                    <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelar" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar" />
                                  </children>
                               </HBox>
                            </children>

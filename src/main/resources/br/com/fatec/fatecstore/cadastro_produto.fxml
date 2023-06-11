@@ -27,7 +27,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button id="text_button" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Produto" textFill="#5a5a5a">
+                  <Button id="text_button" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Cadastrar Produto" textFill="#5a5a5a">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -115,13 +115,13 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="100.0" text="MODELO: " />
-                                    <ComboBox fx:id="cbModelo" prefWidth="150.0" />
+                                    <TextField fx:id="txtModelo" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="480.0">
                                  <children>
-                                    <Label text="VALOR: " />
-                                    <Label text="---" />
+                                    <Label prefWidth="100.0" text="VALOR: " />
+                                    <TextField fx:id="txtValor" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
@@ -140,14 +140,20 @@
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                               <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="btnConfirmar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Confirmar">
+                                    <Button fx:id="btnConfirmar" mnemonicParsing="false" onAction="#btnConfirmar" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Confirmar">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                        <HBox.margin>
                                           <Insets right="40.0" />
-                                       </HBox.margin></Button>
-                                    <Button fx:id="btnCancelar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar" />
+                                       </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                    <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelar" prefWidth="110.0" styleClass="button_cancela" stylesheets="@style.css" text="Cancelar">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
                                  </children>
                               </HBox>
                            </children>

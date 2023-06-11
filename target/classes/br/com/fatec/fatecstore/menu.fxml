@@ -18,7 +18,7 @@
             <VBox id="menu_bar" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="320.0" stylesheets="@style.css">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="btnMenu" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Menu Principal">
+                  <Button fx:id="btnMenu" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Menu Principal">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -174,7 +174,10 @@
                               <Button mnemonicParsing="false" prefWidth="200.0" styleClass="button_verde" stylesheets="@style.css" text="mais modelos">
                                  <VBox.margin>
                                     <Insets />
-                                 </VBox.margin></Button>
+                                 </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                            </children>
                         </VBox>
                      </children>
