@@ -234,14 +234,13 @@ public class VendaController implements Initializable {
     
     @FXML
     private void btnConfirmar() throws IOException, SQLException {
-        
-        if (txtCPFCliente.getText().isEmpty() || txtIDVendedor.getText().isEmpty() || txtQuantidade.getText().isEmpty() || cbMarca.getSelectionModel().isEmpty() || cbModelo.getSelectionModel().isEmpty()) {
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("PREENCHA TODOS OS CAMPOS");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Preencha Todos os campos!");
-            alerta.showAndWait();
-        }else{
+       if (txtCPFCliente.getText().isEmpty() || txtIDVendedor.getText().isEmpty() || txtQuantidade.getText().isEmpty() || cbMarca.getSelectionModel().isEmpty() || cbModelo.getSelectionModel().isEmpty()) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("PREENCHA TODOS OS CAMPOS");
+        alerta.setHeaderText("INFORMACOES");
+        alerta.setContentText("Preencha Todos os campos!");
+        alerta.showAndWait();
+        } else {
             String cpfCliente = txtCPFCliente.getText();
             String idVendedor = txtIDVendedor.getText();
             String marcaProduto = cbMarca.getValue();
@@ -251,33 +250,87 @@ public class VendaController implements Initializable {
             Banco.conectar();
 
             try {
-                String sql = "INSERT INTO venda (CPF_CLIENTE, MARCA_PRODUTO, ID_VENDEDOR, MODELO_PRODUTO, QUANTIDADE) VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement statement = Banco.obterConexao().prepareStatement(sql);
-                statement.setString(1, cpfCliente);
-                statement.setString(2, marcaProduto);
-                statement.setString(3, idVendedor);
-                statement.setString(4, modeloProduto);
-                statement.setInt(5, quantidade);
+                // Consulta para obter a quantidade disponível do produto
+                String selectSql = "SELECT QUANTIDADE FROM PRODUTO WHERE MODELO = ?";
+                PreparedStatement selectStatement = Banco.obterConexao().prepareStatement(selectSql);
+                selectStatement.setString(1, modeloProduto);
+                ResultSet resultSet = selectStatement.executeQuery();
 
-                int rowsInserted = statement.executeUpdate();
+                if (resultSet.next()) {
+                    int quantidadeDisponivel = resultSet.getInt("QUANTIDADE");
 
-                if (rowsInserted > 0) {
-                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                    alerta.setTitle("GRAVADO");
-                    alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("VENDA GRAVADA COM SUCESSO");
-                    alerta.showAndWait();
-                    limpaCampos();
+                    if (quantidade <= quantidadeDisponivel) {
+                        // A quantidade digitada é menor ou igual à quantidade disponível
+                        // Continuar com a inserção da venda e atualização da quantidade no banco de dados
+
+                        String insertSql = "INSERT INTO venda (CPF_CLIENTE, MARCA_PRODUTO, ID_VENDEDOR, MODELO_PRODUTO, QUANTIDADE) VALUES (?, ?, ?, ?, ?)";
+                        PreparedStatement insertStatement = Banco.obterConexao().prepareStatement(insertSql);
+                        insertStatement.setString(1, cpfCliente);
+                        insertStatement.setString(2, marcaProduto);
+                        insertStatement.setString(3, idVendedor);
+                        insertStatement.setString(4, modeloProduto);
+                        insertStatement.setInt(5, quantidade);
+
+                        int rowsInserted = insertStatement.executeUpdate();
+
+                        if (rowsInserted > 0) {
+                            // Venda gravada com sucesso
+                            // Agora, subtrair a quantidade no banco de dados
+
+                            String updateSql = "UPDATE PRODUTO SET QUANTIDADE = QUANTIDADE - ? WHERE MODELO = ?";
+                            PreparedStatement updateStatement = Banco.obterConexao().prepareStatement(updateSql);
+                            updateStatement.setInt(1, quantidade);
+                            updateStatement.setString(2, modeloProduto);
+
+                            int rowsUpdated = updateStatement.executeUpdate();
+
+                            if (rowsUpdated > 0) {
+                                // Atualização bem-sucedida
+                                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                                alerta.setTitle("GRAVADO");
+                                alerta.setHeaderText("INFORMACOES");
+                                alerta.setContentText("VENDA GRAVADA COM SUCESSO");
+                                alerta.showAndWait();
+                                limpaCampos();
+                            } else {
+                                // Tratar o caso em que nenhuma linha foi atualizada
+                                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                                alerta.setTitle("ERRO");
+                                alerta.setHeaderText("INFORMACOES");
+                                alerta.setContentText("Erro ao atualizar a quantidade do produto");
+                                alerta.showAndWait();
+                            }
+
+                            updateStatement.close();
+                        } else {
+                            // Trate o caso em que nenhum registro foi inserido
+                            Alert alerta = new Alert(Alert.AlertType.ERROR);
+                            alerta.setTitle("ERRO");
+                            alerta.setHeaderText("INFORMACOES");
+                            alerta.setContentText("Erro ao gravar a venda");
+                            alerta.showAndWait();
+                        }
+
+                        insertStatement.close();
+                    } else {
+                        // A quantidade digitada é maior que a quantidade disponível
+                        Alert alerta = new Alert(Alert.AlertType.WARNING);
+                        alerta.setTitle("QUANTIDADE INSUFICIENTE");
+                        alerta.setHeaderText("INFORMACOES");
+                        alerta.setContentText("A quantidade disponível do produto é menor que a quantidade digitada");
+                        alerta.showAndWait();
+                    }
                 } else {
-                    // Trate o caso em que nenhum registro foi inserido
-                    Alert alerta = new Alert(Alert.AlertType.ERROR);
-                    alerta.setTitle("ERRO");
+                    // Produto não encontrado
+                    Alert alerta = new Alert(Alert.AlertType.WARNING);
+                    alerta.setTitle("PRODUTO NÃO ENCONTRADO");
                     alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("Erro ao gravar a venda");
+                    alerta.setContentText("O produto selecionado não foi encontrado");
                     alerta.showAndWait();
                 }
 
-            statement.close();
+                resultSet.close();
+                selectStatement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
                 // Trate a exceção adequadamente
