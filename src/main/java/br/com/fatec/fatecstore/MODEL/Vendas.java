@@ -21,7 +21,12 @@ public class Vendas {
         this.formaPagamento = formaPagamento;
     }
 
+    public Vendas(String cpfCliente, String marcaProduto, String modeloProduto, int quantidade, double valorProduto, int id, int idVendedor) {
+        
+    }
+
     // Getters e setters
+    
 
     public String getCpfCliente() {
         return cpfCliente;

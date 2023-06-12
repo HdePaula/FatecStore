@@ -18,7 +18,13 @@
          <children>
             <VBox id="menu_bar" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="320.0" stylesheets="@style.css">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../image/5f868784-b6e8-407d-8232-90a663500233.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="45.0" />
+                     </VBox.margin></ImageView>
                   <Button mnemonicParsing="false" onAction="#switchToMenu" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Menu Principal">
                      <VBox.margin>
                         <Insets bottom="20.0" />
@@ -72,7 +78,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Suporte">
+                  <Button mnemonicParsing="false" onAction="#btnSuporte" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Suporte">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

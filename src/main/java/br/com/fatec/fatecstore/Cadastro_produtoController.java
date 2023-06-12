@@ -97,6 +97,15 @@ public class Cadastro_produtoController implements Initializable {
     }
     
     @FXML
+    void btnSuporte(ActionEvent event) throws IOException {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("SUPORTE");
+        alerta.setHeaderText("INFORMACOES");
+        alerta.setContentText("Se algo nao esta funcionando, nos tambem nao sabemos o motivo, por favor culpe o JavaFX!");
+        alerta.showAndWait();
+    }
+    
+    @FXML
     private void btnConfirmar() throws IOException, SQLException {
         if (txtQuantidade.getText().isEmpty() || txtModelo.getText().isEmpty() || txtValor.getText().isEmpty() || cbMarca.getSelectionModel().isEmpty() || txtModelo.getText().isEmpty()) {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);

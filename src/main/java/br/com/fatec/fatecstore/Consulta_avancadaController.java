@@ -1,9 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package br.com.fatec.fatecstore;
-
+import br.com.fatec.fatecstore.MODEL.Vendas;
 import br.com.fatec.fatecstore.PERSISTENCIA.Banco;
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -35,44 +34,94 @@ public class Consulta_avancadaController implements Initializable {
     }
     
     @FXML
+    private TableColumn<Vendas, String> CPFCliente;
+
+    @FXML
+    private TableColumn<Vendas, String> MarcaProduto;
+
+    @FXML
+    private TableColumn<Vendas, String> ModeloProduto;
+
+    @FXML
+    private TableColumn<Vendas, String> Quantidade;
+
+    @FXML
+    private TableColumn<Vendas, String> Valor;
+
+    @FXML
+    private TableColumn<Vendas, String> idVenda;
+
+    @FXML
+    private TableColumn<Vendas, String> idVendedor;
+
+    @FXML
+    private TableView<Vendas> tbResultado;
+    
+    @FXML
     private ComboBox<String> cbFiltro;
 
     @FXML
     private TextField txtFiltro;
 
     @FXML
-    void btnLogout(ActionEvent event) {
-
+    void btnLogout(ActionEvent event) throws IOException {
+        App.setRoot("login");
     }
 
     @FXML
-    void switchToCadastrarVendedor(ActionEvent event) {
-
+    void switchToCadastrarVendedor(ActionEvent event) throws IOException {
+        App.setRoot("cadastrar_vendedor");
     }
 
     @FXML
-    void switchToCadastroProduto(ActionEvent event) {
-
+    void switchToCadastroProduto(ActionEvent event) throws IOException {
+        App.setRoot("cadastro_produto");
     }
 
     @FXML
-    void switchToEditarDados(ActionEvent event) {
-
+    void switchToEditarDados(ActionEvent event) throws IOException {
+        App.setRoot("editar_dados");
     }
 
     @FXML
-    void switchToMenu(ActionEvent event) {
-
+    void switchToMenu(ActionEvent event) throws IOException {
+        App.setRoot("menu");
     }
 
     @FXML
-    void switchToVenda(ActionEvent event) {
-
+    void switchToVenda(ActionEvent event) throws IOException {
+        App.setRoot("venda");
+    }
+    
+    @FXML
+    void btnSuporte(ActionEvent event) throws IOException {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("SUPORTE");
+        alerta.setHeaderText("INFORMACOES");
+        alerta.setContentText("Se algo nao esta funcionando, nos tambem nao sabemos o motivo, por favor culpe o JavaFX!");
+        alerta.showAndWait();
     }
 
     /**
      * Initializes the controller class.
      */
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        // Adicionar os itens na ComboBox cbFiltro
+        ObservableList<String> items = FXCollections.observableArrayList(
+                "ID", "CPF_CLIENTE", "MARCA_PRODUTO", "ID_VENDEDOR", "MODELO_PRODUTO", "QUANTIDADE", "VALOR_PRODUTO");
+        cbFiltro.setItems(items);
+        
+        CPFCliente.setCellValueFactory(new PropertyValueFactory<>("cpfCliente"));
+        MarcaProduto.setCellValueFactory(new PropertyValueFactory<>("marcaProduto"));
+        ModeloProduto.setCellValueFactory(new PropertyValueFactory<>("modeloProduto"));
+        Quantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        Valor.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        idVenda.setCellValueFactory(new PropertyValueFactory<>("idvenda"));
+        idVendedor.setCellValueFactory(new PropertyValueFactory<>("idvendedor"));
+    }    
     
     // Método para exibir um alerta
     private void exibirAlerta(String titulo, String mensagem) {
@@ -82,15 +131,6 @@ public class Consulta_avancadaController implements Initializable {
         alert.setContentText(mensagem);
         alert.showAndWait();
     }
- 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        // Adicionar os itens na ComboBox cbFiltro
-        ObservableList<String> items = FXCollections.observableArrayList(
-                "ID", "CPF_CLIENTE", "MARCA_PRODUTO", "ID_VENDEDOR", "MODELO_PRODUTO", "QUANTIDADE", "VALOR_PRODUTO");
-        cbFiltro.setItems(items);
-    }    
     
     @FXML
     private void switchToCadastroProduto() throws IOException {
@@ -132,38 +172,56 @@ public class Consulta_avancadaController implements Initializable {
             try {
                 // Conectar ao banco de dados
                 Banco.conectar();
-                
-                Connection connection = Banco.obterConexao();
 
-                // Consultar o banco de dados
-                String sql = "SELECT * FROM VENDA WHERE " + coluna + " = ?";
-                PreparedStatement statement = connection.prepareStatement(sql);
+                // Realizar a consulta ao banco de dados
+                String sql = "SELECT CPF_CLIENTE, MARCA_PRODUTO, MODELO_PRODUTO, QUANTIDADE, VALOR_PRODUTO, ID, ID_VENDEDOR FROM VENDA WHERE " + coluna + " = ?";
+                PreparedStatement statement = Banco.obterConexao().prepareStatement(sql);
                 statement.setString(1, filtro);
 
                 ResultSet resultSet = statement.executeQuery();
 
                 // Verifica se algum item foi encontrado
                 if (resultSet.next()) {
-                    // Item encontrado
-                    // Faça o que for necessário com o resultado
+                    // Limpa os itens existentes na tabela
+                    tbResultado.getItems().clear();
+
+                    do {
+                        // Obtém os valores das colunas do resultado da consulta
+                        String cpfCliente = resultSet.getString("CPF_CLIENTE");
+                        String marcaProduto = resultSet.getString("MARCA_PRODUTO");
+                        String modeloProduto = resultSet.getString("MODELO_PRODUTO");
+                        int quantidade = resultSet.getInt("QUANTIDADE");
+                        int valor = resultSet.getInt("VALOR_PRODUTO");
+                        int id = resultSet.getInt("ID");
+                        int idVendedor = resultSet.getInt("ID_VENDEDOR");
+
+                        // Cria um objeto Venda com os valores obtidos
+                        Vendas venda = new Vendas(cpfCliente, marcaProduto, modeloProduto, quantidade, valor, id, idVendedor);
+
+                        // Adiciona o objeto Venda à tabela
+                        tbResultado.getItems().add(venda);
+                        
+                    } while (resultSet.next());
                 } else {
                     // Nenhum item encontrado
                     exibirAlerta("Nenhum item encontrado", "A pesquisa não retornou resultados.");
+                    limpaCampos();
                 }
 
                 // Fechar recursos
                 resultSet.close();
                 statement.close();
-                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
                 // Tratar exceção
+            } finally {
+                // Desconectar do banco de dados
+                Banco.desconectar();
             }
         } else {
             // Valores não especificados
             exibirAlerta("Valores inválidos", "Por favor, selecione uma coluna e insira um valor de filtro.");
         }
-        Banco.desconectar();
     }
     
     @FXML

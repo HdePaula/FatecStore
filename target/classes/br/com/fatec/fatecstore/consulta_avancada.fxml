@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -22,7 +23,13 @@
          <children>
             <VBox id="menu_bar" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="320.0" stylesheets="@style.css">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../image/5f868784-b6e8-407d-8232-90a663500233.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="45.0" />
+                     </VBox.margin></ImageView>
                   <Button mnemonicParsing="false" onAction="#switchToMenu" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Menu Principal">
                      <VBox.margin>
                         <Insets bottom="20.0" />
@@ -76,7 +83,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Suporte">
+                  <Button mnemonicParsing="false" onAction="#btnSuporte" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Suporte">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -140,15 +147,15 @@
                               <Label text="Pesquisar por: " GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
-                        <TableView prefHeight="489.0" prefWidth="915.0">
+                        <TableView fx:id="tbResultado" prefHeight="489.0" prefWidth="915.0">
                           <columns>
-                            <TableColumn prefWidth="81.0" text="id Venda" />
-                              <TableColumn prefWidth="97.0" text="Id Vendedor" />
-                            <TableColumn prefWidth="148.0" text="CPF Cliente" />
-                              <TableColumn prefWidth="123.0" text="Marca Produto" />
-                              <TableColumn prefWidth="223.0" text="Modelo Produto" />
-                              <TableColumn prefWidth="107.0" text="Quantidade" />
-                              <TableColumn prefWidth="135.0" text="Valor" />
+                            <TableColumn fx:id="idVenda" prefWidth="81.0" text="id Venda" />
+                              <TableColumn fx:id="idVendedor" prefWidth="97.0" text="id Vendedor" />
+                            <TableColumn fx:id="CPFCliente" prefWidth="148.0" text="CPF Cliente" />
+                              <TableColumn fx:id="MarcaProduto" prefWidth="123.0" text="Marca Produto" />
+                              <TableColumn fx:id="ModeloProduto" prefWidth="223.0" text="Modelo Produto" />
+                              <TableColumn fx:id="Quantidade" prefWidth="107.0" text="Quantidade" />
+                              <TableColumn fx:id="Valor" prefWidth="135.0" text="Valor" />
                           </columns>
                         </TableView>
                      </children>

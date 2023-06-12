@@ -17,7 +17,13 @@
          <children>
             <VBox id="menu_bar" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="320.0" stylesheets="@style.css">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../image/5f868784-b6e8-407d-8232-90a663500233.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="45.0" />
+                     </VBox.margin></ImageView>
                   <Button fx:id="btnMenu" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="button_branco" stylesheets="@style.css" text="Menu Principal">
                      <VBox.margin>
                         <Insets bottom="20.0" />
@@ -86,7 +92,6 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="80.0" text="usuário" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -127,8 +132,8 @@
                                              <image>
                                                 <Image url="@../../../../image/modeloNike4.jpeg" />
                                              </image></ImageView>
-                                          <Label id="font_banner" stylesheets="@style.css" text="Label" />
-                                          <Label id="font_codigo" stylesheets="@style.css" text="Label" />
+                                          <Label id="font_banner" stylesheets="@style.css" text="Nike" />
+                                          <Label id="font_codigo" stylesheets="@style.css" text="Dunk" />
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0">
@@ -138,8 +143,8 @@
                                                 <Image url="@../../../../image/modeloNike3.jpeg" />
                                              </image>
                                           </ImageView>
-                                          <Label id="font_banner" stylesheets="@style.css" text="Label" />
-                                          <Label id="font_codigo" stylesheets="@style.css" text="Label" />
+                                          <Label id="font_banner" stylesheets="@style.css" text="Nike" />
+                                          <Label id="font_codigo" stylesheets="@style.css" text="AirForce 1" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -155,8 +160,8 @@
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin></ImageView>
-                                          <Label id="font_banner" stylesheets="@style.css" text="Label" />
-                                          <Label id="font_codigo" stylesheets="@style.css" text="Label" />
+                                          <Label id="font_banner" stylesheets="@style.css" text="Nike" />
+                                          <Label id="font_codigo" stylesheets="@style.css" text="Airmax 90" />
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0">
@@ -165,15 +170,15 @@
                                              <image>
                                                 <Image url="@../../../../image/modeloNike1.jpeg" />
                                              </image></ImageView>
-                                          <Label id="font_banner" stylesheets="@style.css" text="Label" />
-                                          <Label id="font_codigo" stylesheets="@style.css" text="Label" />
+                                          <Label id="font_banner" stylesheets="@style.css" text="Nike" />
+                                          <Label id="font_codigo" stylesheets="@style.css" text="Jordan 1" />
                                        </children>
                                     </VBox>
                                  </children>
                               </HBox>
                               <Button mnemonicParsing="false" prefWidth="200.0" styleClass="button_verde" stylesheets="@style.css" text="mais modelos">
                                  <VBox.margin>
-                                    <Insets />
+                                    <Insets top="20.0" />
                                  </VBox.margin>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />

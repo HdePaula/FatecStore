@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -112,6 +113,15 @@ public class Cadastrar_vendedorController implements Initializable {
     private void btnLogout() throws IOException {
         App.setRoot("login");
     }  
+    
+    @FXML
+    void btnSuporte(ActionEvent event) throws IOException {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("SUPORTE");
+        alerta.setHeaderText("INFORMACOES");
+        alerta.setContentText("Se algo nao esta funcionando, nos tambem nao sabemos o motivo, por favor culpe o JavaFX!");
+        alerta.showAndWait();
+    }
     
     @FXML
     private void btnCancelar() throws IOException {

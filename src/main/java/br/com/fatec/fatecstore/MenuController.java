@@ -8,8 +8,10 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -72,6 +74,15 @@ public class MenuController implements Initializable {
     @FXML
     private void btnLogout() throws IOException {
         App.setRoot("login");
+    }
+    
+    @FXML
+    void btnSuporte(ActionEvent event) throws IOException {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("SUPORTE");
+        alerta.setHeaderText("INFORMACOES");
+        alerta.setContentText("Se algo nao esta funcionando, nos tambem nao sabemos o motivo, por favor culpe o JavaFX!");
+        alerta.showAndWait();
     }
     
 }
