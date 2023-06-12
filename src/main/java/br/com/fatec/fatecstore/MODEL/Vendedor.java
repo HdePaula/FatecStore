@@ -4,6 +4,8 @@
  */
 package br.com.fatec.fatecstore.MODEL;
 
+import java.sql.Date;
+
 /**
  *
  * @author Renato Ferreira
@@ -16,8 +18,9 @@ public class Vendedor {
     private String cargo;
     private String email;
     private String endereco;
+    private String dataNascimento;
 
-    public Vendedor(String nome, String cpf,double salario, String telefone,
+    public Vendedor(String nome, String cpf, String dataNascimento, double salario, String telefone,
                     String cargo, String email, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
@@ -28,7 +31,14 @@ public class Vendedor {
         this.endereco = endereco;
     }
 
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
     // Getters e setters
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 
     public String getNome() {
         return nome;
@@ -85,5 +95,6 @@ public class Vendedor {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
 }
 

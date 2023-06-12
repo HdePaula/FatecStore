@@ -155,7 +155,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefWidth="150.0" text="CARGO: " />
-                                    <ComboBox fx:id="cmbCargo" prefWidth="200.0" />
+                                    <ComboBox fx:id="cbCargo" prefWidth="200.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
@@ -166,7 +166,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="btnConfirmar" mnemonicParsing="false" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Confirmar">
+                                    <Button fx:id="btnConfirmar" mnemonicParsing="false" onAction="#btnConfirmar" prefWidth="110.0" styleClass="button_confirma" stylesheets="@style.css" text="Confirmar">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>

@@ -4,11 +4,21 @@
  */
 package br.com.fatec.fatecstore;
 
+import br.com.fatec.fatecstore.DAO.ProdutoDAO;
+import br.com.fatec.fatecstore.DAO.VendedorDAO;
+import br.com.fatec.fatecstore.MODEL.Produto;
+import br.com.fatec.fatecstore.MODEL.Vendedor;
+import br.com.fatec.fatecstore.PERSISTENCIA.Banco;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -20,6 +30,8 @@ import javafx.scene.control.TextField;
  */
 public class Cadastrar_vendedorController implements Initializable {
     
+    ObservableList<String> cargo = FXCollections.observableArrayList("Vendedor", "Gerente", "Aprendiz");
+    
     @FXML
     private Button btnCancelar;
 
@@ -27,7 +39,7 @@ public class Cadastrar_vendedorController implements Initializable {
     private Button btnConfirmar;
 
     @FXML
-    private ComboBox<?> cmbCargo;
+    private ComboBox<String> cbCargo;
 
     @FXML
     private TextField txtCPFVendedor;
@@ -55,19 +67,20 @@ public class Cadastrar_vendedorController implements Initializable {
      */
     
     private void limpaCampos(){
-        txtCPFVendedor.setText("");
+        cbCargo.getSelectionModel().clearSelection();
+        txtNome.setText("");
         txtDataNascimento.setText("");
+        txtTelefone.setText("");
         txtEmail.setText("");
         txtEndereco.setText("");
+        txtCPFVendedor.setText("");
         txtSalario.setText("");
-        txtNome.setText("");
-        txtTelefone.setText("");
-        cmbCargo.getSelectionModel().clearSelection();
     }
-    
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cbCargo.setItems(cargo);
     }    
     
     @FXML
@@ -98,7 +111,7 @@ public class Cadastrar_vendedorController implements Initializable {
     @FXML
     private void btnLogout() throws IOException {
         App.setRoot("login");
-    }
+    }  
     
     @FXML
     private void btnCancelar() throws IOException {
@@ -106,7 +119,40 @@ public class Cadastrar_vendedorController implements Initializable {
     }
     
     @FXML
-    private void btnConfirmar() throws IOException {
+    private void btnConfirmar() throws IOException, SQLException {
+        if (txtNome.getText().isEmpty() || txtDataNascimento.getText().isEmpty() || txtTelefone.getText().isEmpty() || txtEmail.getText().isEmpty()
+                 || txtEndereco.getText().isEmpty() || txtCPFVendedor.getText().isEmpty() || txtSalario.getText().isEmpty() || cbCargo.getSelectionModel().isEmpty()) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("PREENCHA TODOS OS CAMPOS");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Preencha Todos os campos!");
+            alerta.showAndWait();
+        }else{
+            Banco.conectar();
+
+            Connection connection = Banco.obterConexao();
+            
+            Vendedor v = new Vendedor(txtNome.getText(),txtCPFVendedor.getText(), txtDataNascimento.getText(),Double.parseDouble(txtSalario.getText()),
+                    txtTelefone.getText(), cbCargo.getValue(), txtEmail.getText(), txtEndereco.getText());
+
+            VendedorDAO dao = new VendedorDAO(connection);
+
+                if(dao.insere (v)){
+                    System.out.println("INSERÇÃO OK");
+                }else{
+                    System.out.println("ERRO NA INCLUSAO");
+                }
+                
+            Banco.desconectar();
+            
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("GRAVADO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("VENDEDOR CADASTRADO COM SUCESSO");
+            alerta.showAndWait();
+            
+        }
+        
         limpaCampos();
     }
     
